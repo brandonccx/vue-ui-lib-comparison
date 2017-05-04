@@ -20,8 +20,8 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  padding-top: 60px;
-  background: #333;
+  background: #eee;
   height: 100%;
+  overflow: auto;
 }
 </style>
