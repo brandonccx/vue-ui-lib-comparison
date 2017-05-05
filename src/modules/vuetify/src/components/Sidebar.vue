@@ -3,10 +3,11 @@
     <div class="ct-sidebar-title">
       <span>Clustack</span>
     </div>
-    <div v-for="item, i in items" :key="i" ripple class="ct-sidebar-item">
+    <v-btn v-for="item, i in items" :key="i"
+      dark flat class="ct-sidebar-item">
       <v-icon medium>{{item.icon}}</v-icon>
       <span class="ct-sidebar-item-text">{{item.text}}</span>
-    </div>
+    </v-btn>
   </div>
 </template>
 
@@ -30,10 +31,11 @@
   }
 </script>
 
-<style scope>
+<style>
 .ct-sidebar {
   width: 40px;
   height: 100%;
+  overflow-x: hidden;
 }
 .ct-sidebar.shown {
   width: 100px;
@@ -47,24 +49,33 @@
   display: none;
 }
 .ct-sidebar-title {
-  height: 64px;
+  height: 40px;
   line-height: 64px;
   font-weight: bold;
   font-size: 1.2rem;
   vertical-align: middle;
   background: #3588e0;
+  transition: all linear .3s;
 }
-.ct-sidebar-item {
-  padding-top: 0.5rem;
+.ct-sidebar-item.btn {
   width: 100%;
   height: 40px;
-  border-bottom: 1px solid #3284db;
   transition: all linear .2s;
   cursor: pointer;
+  margin: 0;
+  min-width: 0;
+  padding: 0.5rem 0 0;
 }
+
+.ct-sidebar-item > .btn__content {
+  flex-direction: column;
+}
+
 .ct-sidebar.shown .ct-sidebar-item {
-  padding-top: 1rem;
-  height: 80px;
+  height: 64px;
+}
+.ct-sidebar.shown .ct-sidebar-title {
+  height: 64px;
 }
 .ct-sidebar-item:hover {
   background: #0f5491;

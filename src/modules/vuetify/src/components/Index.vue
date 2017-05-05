@@ -14,20 +14,31 @@
           <v-icon>more_vert</v-icon>
         </v-btn>
       </v-toolbar>
+      <v-breadcrumbs icons divider="chevron_right">
+        <v-breadcrumbs-item
+          v-for="(item, i) in breadcrumb" :key="i"
+          :disabled="i === breadcrumb.length - 1"
+        >
+          {{item}}
+        </v-breadcrumbs-item>
+      </v-breadcrumbs>
+      <ct-table></ct-table>
     </main>
   </div>
 </template>
 
 <script>
 import ctSidebar from './Sidebar'
+import ctTable from './Table'
 export default {
   name: 'HomePage',
   data () {
     return {
-      show: true
+      show: true,
+      breadcrumb: ['资源', '云主机']
     }
   },
-  components: {ctSidebar}
+  components: {ctSidebar, ctTable}
 }
 </script>
 
@@ -42,11 +53,26 @@ main {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   z-index: 10;
   padding-left: 40px;
+  flex-direction: column;
 }
 main.shown {
   padding-left: 100px;
+}
+main > .row {
+  width: 100%;
+}
+main > nav {
+  height: 40px;
+  transition: all linear .3s;
+}
+main.shown > nav {
+  height: 64px;
+}
+.breadcrumbs {
+  justify-content: flex-start;
 }
 .ct-sidebar {
   position: absolute;
